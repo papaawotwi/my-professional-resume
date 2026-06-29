@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Resume | Cloud & DevOps Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .portfolio-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .header-content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .role-title {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-primary);
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .contact-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Layout Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* Tech Tags */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-group label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent-primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        /* Timeline / Experience */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            border: 3px solid var(--card-bg);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .item-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .item-title span {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .item-date {
+            font-size: 13px;
+            color: var(--accent-secondary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        ul li strong {
+            color: var(--text-main);
+        }
+
+        /* Double Column Info Section */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Print Settings to preserve look if exported to PDF */
+        @media print {
+            body {
+                background-color: #fff;
+                color: #000;
+                padding: 0;
+            }
+            :root {
+                --bg-color: #ffffff;
+                --card-bg: #ffffff;
+                --text-main: #0f172a;
+                --text-muted: #334155;
+                --border-color: #e2e8f0;
+                --accent-primary: #0284c7;
+                --accent-secondary: #4f46e5;
+            }
+            section, header {
+                border-radius: 0;
+                border: none;
+                padding: 20px 0;
+                margin-bottom: 10px;
+            }
+            header::before { display: none; }
+            .tag {
+                background: #f1f5f9;
+                border: 1px solid #cbd5e1;
+                color: #0f172a;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-container">
+    
+    <header>
+        <div class="header-content">
+            <h1>Paps Baf</h1>
+            <div class="role-title">$ devops --experience 3-years</div>
+            <div class="contact-links">
+                <a href="mailto:alex.mercer@example.com">📧 alex.mercer@example.com</a>
+                <a href="tel:+1234567890">📱 (123) 456-7890</a>
+                <a href="#" target="_blank">🔗 linkedin.com/in/alex-mercer</a>
+                <a href="#" target="_blank">💻 github.com/alexmercer</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-grid">
+        
+        <section>
+            <h2>🎯 Profile Summary</h2>
+            <p style="color: var(--text-muted); font-size: 14.5px;">
+                Cloud and DevOps Engineer with <strong>3 years of dedicated experience</strong> building automated, secure, and resilient infrastructure ecosystems. Expert at treating infrastructure as software, streamlining CI/CD pipelines, and enabling engineering teams to ship features rapidly and safely.
+            </p>
+        </section>
+
+        <section>
+            <h2>🛠️ Core Stack & Capabilities</h2>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <label>Cloud Environments</label>
+                    <div class="tags">
+                        <span class="tag">AWS (EC2, S3, RDS, IAM, VPC, EKS)</span>
+                        <span class="tag">Microsoft Azure</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <label>Infrastructure as Code & Config</label>
+                    <div class="tags">
+                        <span class="tag">Terraform</span>
+                        <span class="tag">Ansible</span>
+                        <span class="tag">CloudFormation</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <label>Containers & Orchestration</label>
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Helm</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <label>CI/CD Automation</label>
+                    <div class="tags">
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Jenkins</span>
+                        <span class="tag">GitLab CI</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <label>Observability & Languages</label>
+                    <div class="tags">
+                        <span class="tag">Prometheus</span>
+                        <span class="tag">Grafana</span>
+                        <span class="tag">ELK Stack</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Bash</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>💼 Professional Engineering History</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Cloud &amp; DevOps Engineer <span>at TechCorp Solutions</span></div>
+                        <div class="item-date">2024 — PRESENT</div>
+                    </div>
+                    <ul>
+                        <li><strong>Immutable Infrastructure:</strong> Authored Terraform blueprints to provision highly available multi-region AWS environments, decreasing provisioning speeds by <strong>40%</strong>.</li>
+                        <li><strong>Continuous Delivery:</strong> Re-engineered legacy deployment workflows into GitOps driven <strong>GitHub Actions</strong> pipelines, boosting deployment frequency from weekly to multi-daily.</li>
+                        <li><strong>Orchestration Migration:</strong> Containerized a suite of microservices using Docker and successfully migrated workloads onto <strong>Amazon EKS (Kubernetes)</strong>.</li>
+                        <li><strong>FinOps &amp; Metrics:</strong> Established targeted observability dashboards via <strong>Prometheus &amp; Grafana</strong>, reducing idle cloud overhead costs by <strong>15%</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Associate DevOps Specialist <span>at CloudScale Inc</span></div>
+                        <div class="item-date">2023 — 2024</div>
+                    </div>
+                    <ul>
+                        <li><strong>Configuration Automation:</strong> Wrote modular <strong>Ansible playbooks</strong> to manage patch deployments and baseline security profiles on 50+ Ubuntu/RHEL instances.</li>
+                        <li><strong>Centralized Logging:</strong> Implemented an automated <strong>ELK Stack</strong> parsing architecture, cutting debugging and root-cause analysis intervals by <strong>30%</strong>.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="two-col">
+            <section>
+                <h2>🌟 Highlighted Projects</h2>
+                <div style="margin-bottom: 15px;">
+                    <h4 style="font-size:14px; margin-bottom:4px; color:var(--accent-primary);">GitOps Driven EKS Cluster Deployment</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">Deployed a multi-tenant Kubernetes cluster leveraging ArgoCD for declarative continuous deployment cycles.</p>
+                </div>
+                <div>
+                    <h4 style="font-size:14px; margin-bottom:4px; color:var(--accent-primary);">Serverless ETL Data Pipeline</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">Architected an automated, event-driven data parser utilizing AWS Lambda, SQS, and Python scripts.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>🎓 Credentials & Education</h2>
+                <div style="margin-bottom: 15px;">
+                    <div class="item-date" style="margin-bottom: 2px;">VALID UNTIL 2028</div>
+                    <span style="font-size:14px; font-weight:600;">AWS Certified Solutions Architect</span>
+                    <p style="font-size:12px; color:var(--text-muted);">Associate Level</p>
+                </div>
+                <div>
+                    <div class="item-date" style="margin-bottom: 2px;">GRADUATED 2023</div>
+                    <span style="font-size:14px; font-weight:600;">B.S. in Computer Science</span>
+                    <p style="font-size:12px; color:var(--text-muted);">Nexus University</p>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
